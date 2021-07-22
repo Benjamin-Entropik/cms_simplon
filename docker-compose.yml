@@ -1,0 +1,33 @@
+version: "3.5"
+services:
+  node:
+    build:
+      context: .docker/node
+    command: npm start
+    working_dir: /var/www/
+    depends_on:
+      - db
+    environment: 
+      MYSQL_HOST: $MYSQL_HOST
+      MYSQL_PORT: $MYSQL_LOCAL_PORT
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_PASSWORD: $MYSQL_ROOT_PASSWORD
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+      NODE_LOCAL_PORT: $NODE_LOCAL_PORT
+    volumes:
+      - ./:/var/www
+    ports:
+      - "3000:3000"
+
+  db:
+    image: mysql:5.7
+    env_file: ./.env
+    container_name: cms-db
+    ports:
+      - 8307:3306
+    volumes:
+      - ./.docker/mysql/data:/var/lib/mysql
+      - ./.docker/mysql/logs:/var/log/mysql
+
