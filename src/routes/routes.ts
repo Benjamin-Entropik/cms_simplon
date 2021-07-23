@@ -4,14 +4,14 @@ import { Request } from "../server/request";
 import { ArticleController } from "../controller/ArticleController";
 
 export class Routes {
-  static req: Request;
   static build() {
     const router = Router.getInstance();
     router.get('/', 'home', ViewController.home())
     router.get('/about', 'about', ViewController.about())
     router.get('/contact', 'contact', ViewController.contact())
+    router.get('/articles', 'articles', ViewController.articles())
     router.get('/404', 'not-found', ViewController.notFound())
-    router.get('/articles', 'articles', ArticleController.get())
+    router.get('/api/articles', 'articles', ArticleController.get())
     return Router.all();
   }
 
@@ -20,10 +20,9 @@ export class Routes {
     const URL = request.url
     const filterRoute = Router.routes.filter((route: any) => (route.method == METHOD && route.url == URL))
     if (filterRoute && filterRoute.length > 0) {
-      this.req = request;
-      return filterRoute[0].callback;
+      return filterRoute[0].callback();
     } else {
-      return Router.routes.find(elem => elem.url === "/404")?.callback
+      return Router.routes.find(elem => elem.url === "/404")?.callback()
     }
   }
 }

@@ -12,7 +12,7 @@ export class Router {
 
 
   public static getInstance() {
-    if(!Router._instance) Router._instance = new Router();
+    if (!Router._instance) Router._instance = new Router();
     return Router._instance;
   }
 
@@ -22,7 +22,7 @@ export class Router {
       method: Method.GET,
       url: url,
       name: name,
-      callback: callback,
+      callback: (req, res) => {if(!req) {return callback} else {return req}}
     };
 
     Router.createRoute(conf);
