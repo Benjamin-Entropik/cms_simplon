@@ -1,14 +1,12 @@
 import * as http from 'http';
-import { Database } from './database/database';
 
-import { Routes } from './routes/routes';
-import { Request } from './server/request';
-import { Response } from './server/response';
+import { Routes } from './theme/routes/routes';
+import { Request } from './core/server/request';
+import { Response } from './core/server/response';
 
 export class ServerSingleton {
 
   private static _instance: ServerSingleton = new ServerSingleton();
-
   constructor() {
     ServerSingleton._instance = this;
   }
@@ -23,12 +21,22 @@ export class ServerSingleton {
   }
 
   private startServer(port) {
+
     const server = http.createServer((req, res) => {
-      
-      const request = new Request(req);
+      let request;
+      if (req.method == 'POST') {
+        request = Request.getInstance(req);
+        request.requestOptions();
+      } else {
+        request = new Request(req);
+      }
       const response = new Response(res);
       response.responseHandler(Routes.checkRoutes(request))
+
     });
+
+
+
     ServerSingleton.listen(server, port)
     console.log('server open');
 

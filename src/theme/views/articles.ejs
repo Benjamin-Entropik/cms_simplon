@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+<title>cms_simplon</title>
+
+<!-- CSS (load bootstrap from a CDN) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">CMS simplon</a>
+  </nav>
+  <div>
+    Page Articles
+  </div>
+</body>
+
+<script>
+  const params = {
+    field: 'toto',
+    type: 'tata'
+  };
+  fetch("http://localhost:3000/api/articles/add", {
+    method: 'post',
+    headers: { "Content-Type": "application/json" },
+    mode: 'cors',
+    body: JSON.stringify(params),
+    cache: 'default'
+  })
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(error => console.log("Erreur : " + error));
+</script>

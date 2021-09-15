@@ -1,5 +1,5 @@
 
-import { Routes } from './routes/routes';
+import { Routes } from './theme/routes/routes';
 import { ServerSingleton } from './server'
 
 Routes.build();
