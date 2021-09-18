@@ -9,17 +9,15 @@ export class Response {
   }
 
 
-  responseHandler(data: any) {
+  async responseHandler(data: any) {
     if (data instanceof Viewer) {
       this.response.writeHead(200, { "Content-Type": "text/html" })
       return this.response.end(data.display())
     } else {
-      data.then(response => {
-
-        this.response.writeHead(200, { "Content-Type": "application/json" })
-        return this.response.end(JSON.stringify(response));
-      })
+      this.response.writeHead(200, { "Content-Type": "application/json" })
+      return this.response.end(JSON.stringify(data));
 
     }
+
   }
 }

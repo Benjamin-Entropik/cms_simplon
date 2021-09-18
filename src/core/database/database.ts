@@ -1,4 +1,4 @@
-import mysql from 'mysql2/promise';
+import mysql from 'mysql2';
 import { DatabaseModel } from './model/database.model';
 
 export class Database {
@@ -10,9 +10,15 @@ export class Database {
     return mysql.createConnection(db);
   }
 
-  public static async query(sql, callback) {
+  public static async query(sql) {
     let conn = await this.createConnection();
-    let [results, fields] = await conn.query(sql);
-    return callback(results);
+    return new Promise(function (resolve, reject) {
+      conn.query(sql, function (err, rows, fields) {
+        if (err) {
+          return reject(err);
+        }
+        resolve(rows);
+      });
+    })
   }
 }

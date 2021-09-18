@@ -1,6 +1,6 @@
-import { iField } from "./field.interface";
+import { iArticle } from "./article.interface";
 
 export interface iModel {
-  fields: Array<iField>,
+  fields: Array<iArticle>,
   table: string,
 }

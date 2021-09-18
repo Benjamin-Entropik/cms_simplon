@@ -1,0 +1,43 @@
+.navbar {
+  margin-bottom: 4vh;
+}
+
+.nav {
+  position: fixed;
+  width: 380px;
+  height: 100%;
+  box-shadow: 1px 1px 2px grey;
+  background-color: white;
+
+}
+
+.nav .navbar-brand {
+  text-align: center;
+  margin-bottom: 3vh;
+  width: 100%;
+  padding: 2vh;
+  border-bottom: 1px solid gray;
+}
+
+.collapsible {
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+  background-color: rgb(102, 211, 211);
+  color: white;
+}
+
+.content-collapse {
+  overflow: hidden;
+}
+
+.nav .nav-content   {
+  padding: 2vh 2vw;
+}
+

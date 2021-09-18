@@ -2,37 +2,59 @@ import { Database } from "../database";
 import { Query } from "./query";
 
 export abstract class AbstractModel {
-  public static query: Query;
+  query: Query;
   public table;
   public fields;
-
+  selection: any = []
   constructor(table: string, fields) {
     this.table = table;
     this.fields = fields;
-    AbstractModel.query = new Query(this);
+    this.query = new Query(this);
   }
 
   protected overwriteTypes(): object {
     return {};
   }
 
-  public async findAll() {
-    let results: any;
+  public async findAll(data: any = null) {
+    let queryString: string = "";
+    if (!data) {
+      queryString = this.query.select(this.selection).from(this.table).toString()
+    } else {
+      queryString = this.query.select(this.selection).from(this.table).where(data).toString()
 
-    await Database.query(AbstractModel.query.findAll(), function (_results) {
-      results = _results;
-    });
+    }
+    try {
+      this.selection = []
+      const data: any = await Database.query(queryString)
 
-    return results;
+      return data
+    } catch (error) {
+      return { error: error }
+    }
   }
 
-  public async add() {
-    let results: any;
 
-    await Database.query(AbstractModel.query.add(), function (_results) {
-      results = _results;
-    });
+  public async find(id: number) {
+    const queryString: string = this.query.select(this.selection).from(this.table).where({ id: id }).toString()
+    try {
+      this.selection = []
+      const data: any = await Database.query(queryString)
 
-    return results;
+      return data
+    } catch (error) {
+      return { error: error }
+    }
+  }
+
+  public async add(values: object) {
+    const queryString: string = this.query.add(values);
+    try {
+      this.selection = []
+      const data: any = await Database.query(queryString)
+      return data
+    } catch (error) {
+      return { error: error }
+    }
   }
 }

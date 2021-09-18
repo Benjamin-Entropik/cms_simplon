@@ -1,0 +1,74 @@
+<nav class="nav flex-column">
+  <a class="navbar-brand" href="#" style='color: white; font-weight: bold; background-color: #3A8596;'>CMS simplon</a>
+  <ul class="nav-content list-unstyled ps-0">
+    <li class="mb-1">
+      <button class="btn btn-toggle align-items-center rounded collapsed collapsible" data-bs-toggle="collapse"
+        data-bs-target="#home-collapse" aria-expanded="false">
+        Artlicle
+      </button>
+      <div class="content-collapse" id="home-collapse">
+        <ul class="list-articles btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        </ul>
+      </div>
+    </li>
+
+  </ul>
+</nav>
+
+<script language="javascript">
+  const list_Article = document.querySelector('.list-articles')
+  const returnUrl = window.location.protocol + "//" + window.location.host;
+
+  getArticles().then(_articles => {
+    if (_articles.length > 0) {
+      _articles.forEach(article => {
+        let list = document.createElement('li');
+        list.classList.add('p-2');
+        let link = document.createElement('button');
+        link.classList.add('btn')
+        link.addEventListener("click", function () {
+          const url = returnUrl + '/article/' + article.id;
+          window.location.href = url;
+        })
+        link.innerHTML = article.title
+        list.appendChild(link);
+        list_Article.appendChild(list);
+      });
+    }
+
+  })
+
+
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  }
+
+  async function getArticles() {
+    try {
+
+      let response = await fetch("http://localhost:3000/api/articles", {
+        method: 'get',
+        mode: 'cors',
+        cache: 'default'
+      })
+      response = await response.json();
+      const articles = await response.data;
+      return articles;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+</script>

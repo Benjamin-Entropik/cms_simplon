@@ -1,31 +1,56 @@
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>cms_simplon</title>
 
 <!-- CSS (load bootstrap from a CDN) -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="src/assets/css/style.css" type="text/css">
+
+<style>
+  <%- (partials.sideBarCss) %><%- (css.style) %>
+</style>
 
 <body>
-  <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">CMS simplon</a>
-  </nav>
-  <div>
-    Page Articles
-  </div>
+  <%- (partials.sideBar) %>
+
+    <section style='margin-left: 400px;'>
+      <div>
+        Page Articles
+      </div>
+
+      <!-- Trigger/Open The Modal -->
+      <button id="myBtn" class="openModal btn btn-primary">Ajouter un article</button>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content container">
+          <span class="close">&times;</span>
+          <form>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Titre de l'article</label>
+              <input type="text" class="form-control" id="titleArticle" placeholder="titre">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Contenu de l'article</label>
+              <textarea class="form-control" id="contentArticle" rows="3"></textarea>
+            </div>
+
+            <button type="button" id='addArticle' class="btn btn-primary">Publier</button>
+          </form>
+        </div>
+
+      </div>
+
+      <section class="articles">
+      </section>
+
+    </section>
 </body>
 
-<script>
-  const params = {
-    field: 'toto',
-    type: 'tata'
-  };
-  fetch("http://localhost:3000/api/articles/add", {
-    method: 'post',
-    headers: { "Content-Type": "application/json" },
-    mode: 'cors',
-    body: JSON.stringify(params),
-    cache: 'default'
-  })
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(error => console.log("Erreur : " + error));
+<script >
+  <%- (script.js) %>
 </script>

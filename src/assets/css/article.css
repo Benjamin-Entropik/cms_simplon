@@ -1,0 +1,80 @@
+.container {
+  margin-left: 400px;
+  padding: 4vh 0;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 250px;
+  background-color: #3A8596;
+  padding-left: 400px;
+  color: white;
+  font-weight: bold;
+}
+
+.header::after {
+  content: '';
+  display: block;
+  width: 160px;
+  margin-top: 4vh;
+  height: 7px;
+  background-color: white;
+  border-bottom: 1px solid #3A8596;
+}
+
+.article {
+  height: 200px;
+  overflow-y: auto;
+  display: flex;
+}
+
+.article img {
+  margin-right: 3vw;
+}
+
+.article div {
+  width: 50%;
+  padding: 20px;
+}
+
+
+.article h2,
+.commentaire h2 {
+  margin: 4vh 0;
+  width: 100%;
+
+}
+
+.section-commentaires {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentaire {
+  height: 360px;
+  width: 50%;
+  overflow-y: auto;
+}
+
+.commentaire .card {
+  margin: 2vh 0;
+  margin-right: 2vw;
+  width: 90%;
+}
+
+.list-articles {
+  margin-left: 1vw;
+}
+
+.list-articles>li {
+  margin-left: 2vw;
+}
+
+.form-commentaire {
+  width: 500px;
+  border: none;
+  margin: 2vh 2vw;
+
+}
