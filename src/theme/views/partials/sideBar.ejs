@@ -2,11 +2,10 @@
   <a class="navbar-brand" href="#" style='color: white; font-weight: bold; background-color: #3A8596;'>CMS simplon</a>
   <ul class="nav-content list-unstyled ps-0">
     <li class="mb-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed collapsible" data-bs-toggle="collapse"
-        data-bs-target="#home-collapse" aria-expanded="false">
-        Artlicle
+      <button class="btn-articles btn btn-toggle align-items-center rounded collapsed" onclick="goPageArticles()">
+        Articles
       </button>
-      <div class="content-collapse" id="home-collapse">
+      <div class="content-article">
         <ul class="list-articles btn-toggle-nav list-unstyled fw-normal pb-1 small">
         </ul>
       </div>
@@ -16,6 +15,8 @@
 </nav>
 
 <script language="javascript">
+
+  
   const list_Article = document.querySelector('.list-articles')
   const returnUrl = window.location.protocol + "//" + window.location.host;
 
@@ -30,7 +31,7 @@
           const url = returnUrl + '/article/' + article.id;
           window.location.href = url;
         })
-        link.innerHTML = article.title
+        link.innerHTML = ' - ' + article.title
         list.appendChild(link);
         list_Article.appendChild(list);
       });
@@ -38,21 +39,6 @@
 
   })
 
-
-  var coll = document.getElementsByClassName("collapsible");
-  var i;
-
-  for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      var content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
-      }
-    });
-  }
 
   async function getArticles() {
     try {
@@ -69,6 +55,12 @@
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function goPageArticles() {
+    const url = returnUrl + '/articles';
+
+    window.location.href = url;
   }
 
 </script>

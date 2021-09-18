@@ -1,3 +1,14 @@
+## PROJET CMS_SIMPLON
+
+Pour mettre en place le projet, entrez les commandes suivantes : 
+
+* npm install
+* docker-compose build
+
+Pour lancer le serveur, entrez la commande suivante (veuillez d'abord configurer la connexion avec la base de donnée) :
+
+* docker-compose up
+
 ### CONNECTION DATABASE
 
 Rajouter dependance et environnement mysql dans docker-compose 
@@ -29,4 +40,8 @@ Rajouter le fichier d'environnement de base de donnée dans votre container mysq
       - MYSQL_DATABASE=$MYSQL_DATABASE
       - MYSQL_USER=$MYSQL_USER
       - MYSQL_PASSWORD=$MYSQL_PASSWORD
+
+### UTILE
+
+  serveur start sur l'url suivant : localhost:3000
 
