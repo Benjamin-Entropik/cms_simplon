@@ -1,13 +1,14 @@
 body {
   font-family: ir;
 }
+
 .navbar {
   margin-bottom: 4vh;
 }
 
 .nav {
   position: fixed;
-  width: 380px;
+  width: 250px;
   height: 100%;
   box-shadow: 1px 1px 2px grey;
   background-color: white;
@@ -30,16 +31,22 @@ body {
   font-size: 15px;
 }
 
-.btn-articles:hover {
-  border-right: 2px solid #3A8596;
+.btn-articles {
   border-bottom: 2px solid #3A8596;
+
 }
 
-.nav .nav-content {
-  padding: 2vh 2vw;
+.btn-articles:hover {
+  border-left: 2px solid #3A8596;
+}
+
+.list-articles .btn {
+  width: 90%;
+  text-align: left;
+  border-bottom: 2px solid #3A8596;
+
 }
 
 .list-articles .btn:hover {
-  border-right: 2px solid #3A8596;
-  border-bottom: 2px solid #3A8596;
+  border-left: 2px solid #3A8596;
 }

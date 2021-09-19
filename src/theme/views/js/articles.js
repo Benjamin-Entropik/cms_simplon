@@ -17,16 +17,9 @@ getArticles().then(_articles => {
 function createArticleContent(article) {
 
   let bloc = document.createElement('div');
-  let title = document.createElement('h2');
-  let content = document.createElement('p');
-  let seeMore = document.createElement('h2');
-  seeMore.classList.add('see-more')
-  seeMore.innerHTML = '>>'
+  let title = document.createElement('h4');
   title.innerHTML = article.title;
-  content.innerHTML = article.content;
   bloc.appendChild(title);
-  bloc.appendChild(content);
-  bloc.appendChild(seeMore);
   class_articles.appendChild(bloc);
 
   goPageArticle(bloc, article)

@@ -45,10 +45,14 @@ async function getArticle(id) {
 }
 
 function articleNotFound() {
-  form_Commentaire.style.display = 'none';
-  class_commentaire.style.display = 'none';
+  let img_Article = document.querySelector('.img-article');
+  let title_Commentaire = document.querySelector('.title-commentaires');
+  img_Article.remove();
+  title_Commentaire.remove();
+  form_Commentaire.remove();
+  class_commentaire.remove();
   let notArticle = document.createElement('h4');
-  notArticle.classList.add('mt-4')
+  notArticle.classList.add('text-center')
   notArticle.innerHTML = 'Article non trouvé'
   class_article.appendChild(notArticle);
 }
