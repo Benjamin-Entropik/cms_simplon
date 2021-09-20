@@ -4,12 +4,6 @@ export class ViewController {
   public static home() {
     return Viewer.make('home');
   }
-  public static about() {
-    return Viewer.make('about');
-  }
-  public static contact() {
-    return Viewer.make('contact');
-  }
   public static articles() {
     return Viewer.make('articles');
   }

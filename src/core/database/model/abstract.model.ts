@@ -40,7 +40,6 @@ export abstract class AbstractModel {
     try {
       this.selection = []
       const data: any = await Database.query(queryString)
-
       return data
     } catch (error) {
       return { error: error }
@@ -49,6 +48,17 @@ export abstract class AbstractModel {
 
   public async add(values: object) {
     const queryString: string = this.query.add(values);
+    try {
+      this.selection = []
+      const data: any = await Database.query(queryString)
+      return data
+    } catch (error) {
+      return { error: error }
+    }
+  }
+
+  public async update(values: object, id: number) {
+    const queryString: string = this.query.update(values, id);
     try {
       this.selection = []
       const data: any = await Database.query(queryString)

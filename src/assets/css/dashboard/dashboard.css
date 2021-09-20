@@ -1,0 +1,53 @@
+.header {
+  width: 300px;
+  right: 0;
+  position: absolute;
+  color: #A7001E;
+  border-bottom: 5px solid #A7001E;
+  padding: 1vh;
+
+}
+.header h2 {
+  font-weight: bold;
+}
+
+.dashboard {
+  height: 870px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 400px;
+  padding-top: 1vh;
+
+}
+
+.dashboard div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 300px;
+  color: #A7001E;
+  margin: 2vh;
+  margin-top: 13.5vh;
+  border-right: 3px solid #A7001E;
+  border-bottom: 3px solid #A7001E;
+  border-radius: 10px;
+  transition: all ease 0.3s;
+}
+
+.dashboard div h2 {
+  font-weight: bold;
+}
+
+.dashboard div:hover {
+  background-color: gray;
+  font-weight: bold;
+
+  color: white;
+}
+.dashboard .articles:hover {
+  background-color: #A7001E;
+  cursor: pointer;
+  color: white;
+}

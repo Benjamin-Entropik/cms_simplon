@@ -1,0 +1,15 @@
+Créer dashboard : dashboard/
+		   dashboard/articles
+		   dashboard/article/:id
+	- ajouter un article
+	- modifier un article 
+	- voir tout les articles 
+	- voir tout les commentaires d'un article
+	- supprimer un commentaire
+	- ajouté la sidebar ici 
+	
+
+déplacer depuis theme jusqu'a dashboard :
+	- modifier article
+	- ajouter article
+	- changer sideBar en navbar

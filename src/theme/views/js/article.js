@@ -2,6 +2,7 @@ let class_article = document.querySelector('.article');
 let class_header = document.querySelector('.header');
 let class_commentaire = document.querySelector('.commentaire');
 let form_Commentaire = document.querySelector('.form-commentaire');
+let title_commentaire_not_found = document.createElement('h5');
 
 let url = window.location.pathname;
 let parse = url.split('/').slice(1);
@@ -24,6 +25,10 @@ getCommentaires(idArticle).then(_commentaires => {
     _commentaires.forEach(commentaire => {
       createCommentaireContent(commentaire)
     })
+  } else {
+    title_commentaire_not_found.classList.add("commentaire-not-found");
+    title_commentaire_not_found.innerHTML = 'Il n\'y a pas encore de commentaire'
+    class_commentaire.appendChild(title_commentaire_not_found)
   }
 });
 
@@ -69,7 +74,7 @@ function createArticleContent(article) {
 }
 
 function createCommentaireContent(commentaire) {
-
+  title_commentaire_not_found.remove();
   let card = document.createElement('div');
   card.classList.add("card");
   let cardBody = document.createElement('div');

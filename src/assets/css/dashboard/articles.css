@@ -1,0 +1,14 @@
+.header {
+  width: 200px;
+  right: 0;
+  position: absolute;
+  margin-bottom: 5vh;
+  color: #A7001E;
+  border-bottom: 5px solid #A7001E;
+  padding: 1vh;
+
+}
+
+.header h2 {
+  font-weight: bold;
+}

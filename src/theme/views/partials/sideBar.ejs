@@ -1,6 +1,9 @@
 <nav class="nav flex-column">
-  <a class="navbar-brand" href="#" style='color: white; font-weight: bold; background-color: #212E53;'>CMS simplon</a>
+  <a class="navbar-brand nav-title" href="#" id='home'>CMS simplon</a>
   <ul class="nav-content list-unstyled ps-0">
+    <li class="mb-1">
+      <button class="btn rounded go-site" id='site'>Visiter le site</button>
+    </li>
     <li class="mb-1">
       <button class="btn-articles btn btn-toggle align-items-center rounded collapsed" onclick="goPageArticles()">
         Articles
@@ -9,6 +12,10 @@
         <ul class="list-articles btn-toggle-nav list-unstyled fw-normal pb-1 small">
         </ul>
       </div>
+
+      <div class="nav-footer">
+        <button class="btn">Modifier le theme</button>
+      </div>
     </li>
 
   </ul>
@@ -16,9 +23,18 @@
 
 <script language="javascript">
 
-  
   const list_Article = document.querySelector('.list-articles')
   const returnUrl = window.location.protocol + "//" + window.location.host;
+  const redirectDashboard = document.getElementById('home');
+  const redirectSite = document.getElementById('site');
+
+  redirectDashboard.addEventListener('click', function () {
+    window.location.href = returnUrl + '/dashboard';
+  })
+
+  redirectSite.addEventListener('click', function () {
+    window.location.href = returnUrl + '/';
+  })
 
   getArticles().then(_articles => {
     if (_articles.length > 0) {
@@ -28,7 +44,7 @@
         let link = document.createElement('button');
         link.classList.add('btn')
         link.addEventListener("click", function () {
-          const url = returnUrl + '/article/' + article.id;
+          const url = returnUrl + '/dashboard/article/' + article.id;
           window.location.href = url;
         })
         link.innerHTML = ' - ' + article.title
@@ -58,7 +74,7 @@
   }
 
   function goPageArticles() {
-    const url = returnUrl + '/articles';
+    const url = returnUrl + '/dashboard/articles';
 
     window.location.href = url;
   }

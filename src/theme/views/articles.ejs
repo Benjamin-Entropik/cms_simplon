@@ -6,25 +6,24 @@
 <!-- CSS (load bootstrap from a CDN) -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="src/assets/css/style.css" type="text/css">
 
 <style>
-  <%- (partials.sideBarCss) %><%- (css.style) %>
+  <%- (partials.navBarCss) %><%- (css.style) %>
 </style>
 
 <body>
-  <%- (partials.sideBar) %>
-  <section class="header">
+  <%- (partials.navBar) %>
+
+  <section class="header mb-5">
     <h1>
       Bienvenue sur le blog
     </h1>
   </section>
-
     <section style='margin-left: 400px;'>
     
 
       <!-- Trigger/Open The Modal -->
-      <button id="myBtn" class="openModal btn">Ajouter un article</button>
+      <!-- <button id="myBtn" class="openModal btn">Ajouter un article</button> -->
 
       <!-- The Modal -->
       <div id="myModal" class="modal">
@@ -47,8 +46,8 @@
         </div>
 
       </div>
-      <div class="heading-frame">
-        <h2>Premier article</h2>
+      <div class="heading-frame mb-5">
+        <h2>Les articles publiés</h2>
       </div>
       <section class="articles">
         

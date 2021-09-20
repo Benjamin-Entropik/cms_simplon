@@ -22,6 +22,7 @@ export class ArticleController {
   public static async add(request: any) {
     try {
       const { title, content } = request.data.body;
+      console.log({ title, content } )
       let articles = await new Article().add({ title, content });
       return articles;
     } catch (error) {

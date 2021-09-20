@@ -1,0 +1,113 @@
+.container {
+  margin-left: 400px;
+  padding: 4vh 0;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 260px;
+  background-color: maroon;
+  padding-left: 400px;
+  color: white;
+  font-weight: bold;
+}
+
+.header::after {
+  content: '';
+  display: block;
+  width: 160px;
+  margin-top: 4vh;
+  height: 7px;
+  background-color: white;
+  border-bottom: 1px solid maroon;
+}
+
+.article {
+  height: 200px;
+  overflow-y: auto;
+  display: flex;
+}
+
+.article img {
+  margin-right: 3vw;
+}
+
+.article div {
+  width: 50%;
+  padding: 20px;
+}
+
+
+.article h2,
+.commentaire h2 {
+  margin: 4vh 0;
+  width: 100%;
+
+}
+
+.section-commentaires {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-commentaires ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.section-commentaires ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.section-commentaires ::-webkit-scrollbar-thumb {
+  background: maroon;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.section-commentaires ::-webkit-scrollbar-thumb:hover {
+  background: maroon;
+}
+
+.commentaire {
+  height: 360px;
+  width: 50%;
+  overflow-y: auto;
+}
+
+.commentaire .card {
+  border: none;
+  border-right: 1px solid maroon;
+  border-bottom: 1px solid maroon;
+  margin: 2vh 0;
+  margin-right: 2vw;
+  width: 90%;
+}
+
+.form-commentaire {
+  width: 500px;
+  border: none;
+  margin: 2vh 2vw;
+
+}
+
+.form-commentaire button {
+  color: black;
+  background-color: white;
+  border: 1px solid maroon;
+}
+
+.form-commentaire button:hover {
+  background-color: maroon;
+  border: 1px solid maroon;
+
+}
+
+.commentaire-not-found {
+  margin-top: 2vh;
+  color: gray;
+}

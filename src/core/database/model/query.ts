@@ -90,6 +90,20 @@ export class Query {
     return `INSERT INTO ${this.table} (${arrayField}) values (${arrayValues})`;
   }
 
+  public update(values: object, id: number) {
+    const keys: any = Object.keys(values);
+    const vals: any = Object.values(values);
+
+    let arrayValues: string = `${keys[0]} = '${vals[0]}'`;
+
+    for (let i = 1; i < vals.length; i++) {
+      arrayValues += `, ${keys[i]} = '${vals[i]}'`;
+    }
+    let update = `UPDATE ${this.table} SET ${arrayValues} WHERE id = ${id}`;
+    console.log(update);
+    return update;
+  }
+
   toString() {
     const liestFields: string = (this.selectedFields.length > 0) ? this.selectedFields.join(`, `) : '*'
     let query: string = "";

@@ -1,0 +1,23 @@
+<nav class="navbar navbar-light bg-light justify-content-between mb-0">
+  <a class="navbar-brand">CMS Simplon</a>
+  <div>
+    <a class="nav-link mr-3" href="#" id='articles'>Articles</a>
+    <a class="nav-link" href="#" id='dashboard'>Dashboard</a>
+  </div>
+</nav>
+
+<script>
+  const returnUrl = window.location.protocol + "//" + window.location.host;
+  const articles = document.getElementById('articles');
+  const dashboard = document.getElementById('dashboard');
+
+  articles.addEventListener("click", function () {
+    const url = returnUrl + '/';
+    window.location.href = url;
+  })
+
+  dashboard.addEventListener("click", function () {
+    const url = returnUrl + '/dashboard';
+    window.location.href = url;
+  })
+</script>
