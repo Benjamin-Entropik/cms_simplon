@@ -1,9 +1,5 @@
 let class_articles = document.getElementsByClassName('articles')[0];
 
-let publish = document.getElementById('addArticle');
-publish.addEventListener('click', function () {
-  addArticle();
-});
 
 getArticles().then(_articles => {
   if (_articles.length > 0) {
@@ -16,15 +12,28 @@ getArticles().then(_articles => {
 
 function createArticleContent(article) {
 
-  let bloc = document.createElement('div');
-  let title = document.createElement('h4');
+  let article_card = document.createElement('div');
+  article_card.classList.add('article');
+  let article_content = document.createElement('div');
+  article_content.classList.add('container__text');
+  let title = document.createElement('h1');
+  let content = document.createElement('p');
+  let btn_article = document.createElement('button');
+  btn_article.classList.add('btn');
+
   title.innerHTML = article.title;
-  bloc.appendChild(title);
-  class_articles.appendChild(bloc);
+  content.innerHTML = article.content;
+  btn_article.innerHTML = 'Voir l\'article'
+  article_content.appendChild(title);
+  article_content.appendChild(content);
+  article_content.appendChild(btn_article);
+  article_card.appendChild(article_content);
+  class_articles.appendChild(article_card);
 
-  goPageArticle(bloc, article)
-
+  goPageArticle(btn_article, article)
 }
+
+
 function goPageArticle(btn, article) {
   const returnUrl = window.location.protocol + "//" + window.location.host;
   const url = returnUrl + '/article/' + article.id;
@@ -48,24 +57,4 @@ async function getArticles() {
   } catch (error) {
     console.log(error);
   }
-}
-
-function addArticle() {
-  let title = document.getElementById('titleArticle');
-  let content = document.getElementById('contentArticle');
-  const article = {
-    title: title.value,
-    content: content.value
-  };
-  fetch("http://localhost:3000/api/articles/add", {
-    method: 'post',
-    headers: { "Content-Type": "application/json" },
-    mode: 'cors',
-    body: JSON.stringify(article),
-    cache: 'default'
-  })
-    .then(response => response.json())
-    .then(response => createArticleContent(article))
-    .catch(error => console.log("Erreur : " + error));
-
 }
