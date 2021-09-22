@@ -1,5 +1,4 @@
 			 
-	- Delete Article (cascade delete commentaire)
 	- Voir les themes (pages apparence)
 	- modifier le theme
 	- Rajouter snackbar de validation ou d'echec 

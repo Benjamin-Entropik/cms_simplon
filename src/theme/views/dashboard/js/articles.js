@@ -7,7 +7,6 @@ let articles_container = document.querySelector('.articles');
 
 
 function createArticleContent(article) {
-
   let bloc = document.createElement('div');
   let title = document.createElement('h4');
   title.innerHTML = article.title;
@@ -68,14 +67,16 @@ function addArticle() {
     cache: 'default'
   })
     .then(response => response.json())
-    .then(response => createArticleContent(article))
+    .then(response => {
+      article['id'] = response.data.insertId
+      createArticleContent(article)
+    })
     .catch(error => console.log("Erreur : " + error));
   modal.style.display = "none";
 }
 
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("modal-add-article");
-console.log(modal);
 var span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function () {

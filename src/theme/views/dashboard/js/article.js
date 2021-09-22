@@ -6,10 +6,50 @@ let title_input = document.getElementById('title_input');
 let content = document.getElementById('content');
 let update = document.getElementById('update');
 let btn_go_article = document.getElementById('go-article');
+let btn_delete_article = document.getElementById('delete-article');
 
 let url = window.location.pathname;
 let parse = url.split('/').slice(1);
 const idArticle = parseInt(parse[2]);
+
+btn_delete_article.addEventListener('click', function () {
+  let body = document.querySelector('body');
+  if (document.querySelector('.delete') == null) {
+    const elements = createElementDeleteSnackbar();
+    elements.cancel.addEventListener('click', function () {
+      elements.card.remove();
+    })
+    elements.del.addEventListener('click', function () {
+      deleteArticle();
+    })
+    elements.card_footer.appendChild(elements.cancel);
+    elements.card_footer.appendChild(elements.del);
+
+    elements.card.appendChild(elements.title);
+    elements.card.appendChild(elements.card_footer);
+    body.appendChild(elements.card);
+  }
+
+})
+
+function createElementDeleteSnackbar() {
+  let card = document.createElement('div');
+  card.classList.add('delete');
+  let title = document.createElement('h3');
+  let card_footer = document.createElement('div');
+  card_footer.classList.add('delete-footer');
+  let cancel = document.createElement('button');
+  cancel.classList.add('btn')
+  let del = document.createElement('button');
+  del.classList.add('btn')
+  cancel.innerHTML = 'Annuler'
+  del.innerHTML = 'Valider'
+  title.innerHTML = 'Voulez supprimer l\'article ?';
+
+
+  return { card, title, card_footer, cancel, del }
+
+}
 
 btn_go_article.addEventListener('click', function () {
   const returnUrl = window.location.protocol + "//" + window.location.host;
@@ -21,6 +61,24 @@ btn_go_article.addEventListener('click', function () {
 update.addEventListener('click', function () {
   updateArticle();
 })
+
+function deleteArticle() {
+  fetch("http://localhost:3000/api/articles/delete", {
+    method: 'post',
+    headers: { "Content-Type": "application/json" },
+    mode: 'cors',
+    body: JSON.stringify(idArticle),
+    cache: 'default'
+  })
+    .then(response => response.json())
+    .then(response => {
+      const returnUrl = window.location.protocol + "//" + window.location.host;
+      const url = returnUrl + '/notFound';
+
+      window.location.href = url;
+    })
+    .catch(error => console.log("Erreur : " + error));
+}
 
 getArticle(idArticle).then(_article => {
   if (_article.length == 0) {

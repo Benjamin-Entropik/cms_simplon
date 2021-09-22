@@ -9,7 +9,7 @@ export class CommentaireController {
       const commentaire = await new Commentaire().findAll({ article_id: id })
       return commentaire;
     } catch (error) {
-      console.log('error in single article (html)', error)
+      console.log('error in single commentaire (html)', error)
     }
   }
 
@@ -32,7 +32,7 @@ export class CommentaireController {
       return commentaire;
 
     } catch (error) {
-      console.log('error in post article (api)', error)
+      console.log('error in delete commentaire (api)', error)
     }
   }
 

@@ -1,5 +1,7 @@
 import { Article } from "../../core/database/model/article.model";
+import { Commentaire } from "../../core/database/model/commentaire.model";
 import { Request } from "../../core/server/request";
+import { CommentaireController } from "./CommentaireController";
 
 export class ArticleController {
   public static async get() {
@@ -35,8 +37,34 @@ export class ArticleController {
       return article;
 
     } catch (error) {
-      console.log('error in post article (api)', error)
+      console.log('error for update article (api)', error)
     }
   }
+
+  public static async delete(request: any) {
+    try {
+      const id = request.data.body;
+      const commentaires = await new Commentaire().findAll({ article_id: id })
+      if (commentaires.length == 0) {
+        await new Article().delete(id);
+        return 'Article supprimer';
+      } else {
+        commentaires.forEach(commentaire => {
+          let req = {
+            data: {
+              body: commentaire.id
+            }
+          }
+          CommentaireController.delete(req);
+        })
+        await new Article().delete(id);
+
+      }
+
+    } catch (error) {
+      console.log('error for delete article (api)', error)
+    }
+  }
+
 
 }

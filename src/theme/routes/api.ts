@@ -9,6 +9,7 @@ export class RoutesApi {
     Router.post('/api/articles/add', 'articles-add', ArticleController.add)
     Router.get('/api/article/:id', 'article-get', ArticleController.findOne)
     Router.post('/api/articles/update', 'article-update', ArticleController.update)
+    Router.post('/api/articles/delete', 'article-delete', ArticleController.delete)
 
     Router.get('/api/article/commentaires/:id', 'commentaires-get', CommentaireController.get)
     Router.post('/api/commentaires/add', 'commentaire-add', CommentaireController.add)
