@@ -1,11 +1,11 @@
-Créer dashboard : 
-			 dashboard/ *CHECK
-		   dashboard/articles *CHECK
-		   dashboard/article/:id *CHECK (a finir)
 			 
-	- modifier un article 
-	- voir tout les commentaires d'un article
-	- supprimer un commentaire
+	- Delete Article (cascade delete commentaire)
 	- Voir les themes (pages apparence)
 	- modifier le theme
-	
+	- Rajouter snackbar de validation ou d'echec 
+	- Mise en place where join
+	- Mise en place authentification 
+	- Commenter toute les fonctions 
+	- RESPONSIVITÉ !!
+	- vider champ après action (formulaire)
+	- regex sur tout les champs

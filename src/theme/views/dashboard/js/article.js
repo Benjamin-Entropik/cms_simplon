@@ -5,10 +5,22 @@ let title_commentaire_not_found = document.createElement('h5');
 let title_input = document.getElementById('title_input');
 let content = document.getElementById('content');
 let update = document.getElementById('update');
+let btn_go_article = document.getElementById('go-article');
 
 let url = window.location.pathname;
 let parse = url.split('/').slice(1);
 const idArticle = parseInt(parse[2]);
+
+btn_go_article.addEventListener('click', function () {
+  const returnUrl = window.location.protocol + "//" + window.location.host;
+  const url = returnUrl + '/article/' + idArticle;
+
+  window.location.href = url;
+})
+
+update.addEventListener('click', function () {
+  updateArticle();
+})
 
 getArticle(idArticle).then(_article => {
   if (_article.length == 0) {
@@ -16,10 +28,6 @@ getArticle(idArticle).then(_article => {
   } else {
     getArticleContent(_article[0])
   }
-})
-
-update.addEventListener('click', function () {
-  updateArticle();
 })
 
 getCommentaires(idArticle).then(_commentaires => {
@@ -31,12 +39,6 @@ getCommentaires(idArticle).then(_commentaires => {
     commentaireNotFound()
   }
 });
-
-function commentaireNotFound() {
-  title_commentaire_not_found.classList.add("commentaire-not-found");
-  title_commentaire_not_found.innerHTML = 'Il n\'y a pas encore de commentaire'
-  class_commentaire.appendChild(title_commentaire_not_found)
-}
 
 async function getArticle(id) {
   try {
@@ -55,17 +57,68 @@ async function getArticle(id) {
   }
 }
 
-function articleNotFound() {
-  let img_Article = document.querySelector('.img-article');
-  let title_Commentaire = document.querySelector('.title-commentaires');
-  img_Article.remove();
-  title_Commentaire.remove();
-  class_commentaire.remove();
-  let notArticle = document.createElement('h4');
-  notArticle.classList.add('text-center')
-  notArticle.innerHTML = 'Article non trouvé'
-  class_article.appendChild(notArticle);
+async function getCommentaires(id) {
+  try {
+
+    let response = await fetch("http://localhost:3000/api/article/commentaires/" + id, {
+      method: 'get',
+      mode: 'cors',
+      cache: 'default'
+    })
+    response = await response.json();
+    const article = await response.data;
+    return article;
+
+  } catch (error) {
+    console.log(error);
+  }
 }
+
+async function updateArticle() {
+  const article = {
+    title: title_input.value,
+    content: content.value,
+    id: idArticle
+  };
+  fetch("http://localhost:3000/api/articles/update", {
+    method: 'post',
+    headers: { "Content-Type": "application/json" },
+    mode: 'cors',
+    body: JSON.stringify(article),
+    cache: 'default'
+  })
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(error => console.log("Erreur : " + error));
+
+}
+
+async function deleteCommentaire(id) {
+  try {
+
+    let response = await fetch("http://localhost:3000/api/commentaires/delete", {
+      method: 'post',
+      headers: { "Content-Type": "application/json" },
+      mode: 'cors',
+      body: JSON.stringify(id),
+      cache: 'default'
+    })
+    response = await response.json();
+    const article = await response.data;
+    if (article.affectedRows == true) {
+      let deleted_commentaire = document.getElementById('card ' + id)
+      deleted_commentaire.remove();
+      let allCommentaire = document.querySelectorAll('.commentaire-card')
+      allCommentaire.length == 0 ? commentaireNotFound() : console.log(allCommentaire);
+    }
+    return article;
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//CONFIG DOM
 
 function getArticleContent(article) {
   let title_header = document.createElement('h1');
@@ -120,63 +173,21 @@ function updateDeleteCommentaireBtn(delete_btn, id) {
   })
 }
 
-async function getCommentaires(id) {
-  try {
-
-    let response = await fetch("http://localhost:3000/api/article/commentaires/" + id, {
-      method: 'get',
-      mode: 'cors',
-      cache: 'default'
-    })
-    response = await response.json();
-    const article = await response.data;
-    return article;
-
-  } catch (error) {
-    console.log(error);
-  }
+function commentaireNotFound() {
+  title_commentaire_not_found.classList.add("commentaire-not-found");
+  title_commentaire_not_found.innerHTML = 'Il n\'y a pas encore de commentaire'
+  class_commentaire.appendChild(title_commentaire_not_found)
 }
 
-function updateArticle() {
-  const article = {
-    title: title_input.value,
-    content: content.value,
-    id: idArticle
-  };
-  fetch("http://localhost:3000/api/articles/update", {
-    method: 'post',
-    headers: { "Content-Type": "application/json" },
-    mode: 'cors',
-    body: JSON.stringify(article),
-    cache: 'default'
-  })
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(error => console.log("Erreur : " + error));
 
-}
-
-async function deleteCommentaire(id) {
-  try {
-
-    let response = await fetch("http://localhost:3000/api/commentaires/delete", {
-      method: 'post',
-      headers: { "Content-Type": "application/json" },
-      mode: 'cors',
-      body: JSON.stringify(id),
-      cache: 'default'
-    })
-    response = await response.json();
-    const article = await response.data;
-    if (article.affectedRows == true) {
-      let deleted_commentaire = document.getElementById('card ' + id)
-      deleted_commentaire.remove();
-      let allCommentaire = document.querySelectorAll('.commentaire-card')
-      allCommentaire.length == 0 ? commentaireNotFound() : console.log(allCommentaire);
-    }
-    return article;
-
-  } catch (error) {
-    console.log(error);
-  }
+function articleNotFound() {
+  let img_Article = document.querySelector('.img-article');
+  let title_Commentaire = document.querySelector('.title-commentaires');
+  img_Article.remove();
+  title_Commentaire.remove();
+  class_commentaire.remove();
+  let notArticle = document.createElement('h4');
+  notArticle.classList.add('text-center')
+  notArticle.innerHTML = 'Article non trouvé'
+  class_article.appendChild(notArticle);
 }

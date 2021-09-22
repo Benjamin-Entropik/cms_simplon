@@ -1,5 +1,9 @@
+body {
+  background-image: linear-gradient(-45deg, #A7001E 24%, transparent 25%);
+}
+
 .container {
-  margin-left: 400px;
+  margin-left: 300px;
   padding: 4vh 0;
 }
 
@@ -16,6 +20,18 @@
 
 .header h2 {
   font-weight: bold;
+}
+
+.see-article .btn {
+  background-color: #A7001E;
+  color: white;
+  transition: all ease 0.2s;
+}
+
+.see-article .btn:hover {
+  background-color: white;
+  color: #A7001E;
+  border: 1px solid #A7001E;
 }
 
 ._article {
@@ -72,7 +88,7 @@
 }
 
 .commentaire {
-  height: 360px;
+  max-height: 360px;
   width: 50%;
   overflow-y: auto;
 }
@@ -91,11 +107,14 @@
   color: gray;
 }
 
-.delete-btn, .update-article {
+.delete-btn,
+.update-article {
   background-color: #A7001E;
   color: white;
 }
-.delete-btn:hover, .update-article:hover {
+
+.delete-btn:hover,
+.update-article:hover {
   background-color: white;
   border-color: #A7001E;
   color: #A7001E;

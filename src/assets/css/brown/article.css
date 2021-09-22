@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 260px;
+  height: 210px;
   background-color: maroon;
   padding-left: 400px;
   color: white;
@@ -74,7 +74,7 @@
 }
 
 .commentaire {
-  height: 360px;
+  max-height: 360px;
   width: 50%;
   overflow-y: auto;
 }

@@ -1,3 +1,7 @@
+body {
+  background-image: linear-gradient(-45deg, #A7001E 24%, transparent 25%);
+}
+
 .header {
   width: auto;
   right: 0;
@@ -56,6 +60,7 @@
   height: 250px;
   padding: 2rem;
   margin-right: 7vw;
+  margin-bottom: 4vh;
 
 }
 
