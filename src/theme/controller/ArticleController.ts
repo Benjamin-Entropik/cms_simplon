@@ -3,7 +3,6 @@ import { Request } from "../../core/server/request";
 
 export class ArticleController {
   public static async get() {
-
     let articles = await new Article().findAll();
     return articles;
   }
@@ -22,13 +21,22 @@ export class ArticleController {
   public static async add(request: any) {
     try {
       const { title, content } = request.data.body;
-      console.log({ title, content } )
-      let articles = await new Article().add({ title, content });
-      return articles;
+      let article = await new Article().add({ title, content });
+      return article;
     } catch (error) {
       console.log('error in post article (api)', error)
     }
 
+  }
+  public static async update(request: any) {
+    try {
+      const { title, content, id } = request.data.body;
+      let article = await new Article().update({ title, content }, id);
+      return article;
+
+    } catch (error) {
+      console.log('error in post article (api)', error)
+    }
   }
 
 }

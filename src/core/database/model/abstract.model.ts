@@ -67,4 +67,16 @@ export abstract class AbstractModel {
       return { error: error }
     }
   }
+
+  public async delete(id: number) {
+    const queryString: string = this.query.delete(id);
+    try {
+      this.selection = []
+      const data: any = await Database.query(queryString)
+      return data
+    } catch (error) {
+      return { error: error }
+    }
+  }
+
 }

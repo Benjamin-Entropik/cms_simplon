@@ -25,4 +25,16 @@ export class CommentaireController {
 
   }
 
+  public static async delete(request: any) {
+    try {
+      const id = request.data.body;
+      let commentaire = await new Commentaire().delete(id);
+      return commentaire;
+
+    } catch (error) {
+      console.log('error in post article (api)', error)
+    }
+  }
+
+
 }

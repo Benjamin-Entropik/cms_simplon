@@ -18,6 +18,11 @@ export class Query {
     return this;
   }
 
+  public delete(id: number) {
+    console.log(`DELETE FROM ${this.table} WHERE id = ${id}`)
+    return `DELETE FROM ${this.table} WHERE id = ${id}`;
+  }
+
   from(table: any, alias: any = null) {
     if (!alias) {
       this.table = table;

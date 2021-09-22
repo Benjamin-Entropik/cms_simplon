@@ -8,6 +8,7 @@ export class Routes {
     Router.get('/article/:id', 'article-view', ViewController.article);
     Router.get('/dashboard', 'dashboard-view', DashboardController.view);
     Router.get('/dashboard/articles', 'dashboard-articles-view', DashboardController.viewArticles);
+    Router.get('/dashboard/article/:id', 'dashboard-article-view', DashboardController.viewArticle);
     Router.get('/404', 'not-found', ViewController.notFound)
     return Router.all();
   }

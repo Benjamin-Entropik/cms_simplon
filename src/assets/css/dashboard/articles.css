@@ -1,11 +1,12 @@
 .header {
-  width: 200px;
+  width: auto;
   right: 0;
   position: absolute;
   margin-bottom: 5vh;
   color: #A7001E;
   border-bottom: 5px solid #A7001E;
   padding: 1vh;
+  padding-right: 5vh;
 
 }
 

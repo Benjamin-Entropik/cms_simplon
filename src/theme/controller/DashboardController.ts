@@ -15,4 +15,12 @@ export class DashboardController {
     }
     return Viewer.make(file);
   }
+
+  public static viewArticle() {
+    const file = {
+      dirPath: 'src/theme/views/dashboard/',
+      filename: 'article'
+    }
+    return Viewer.make(file);
+  }
 }

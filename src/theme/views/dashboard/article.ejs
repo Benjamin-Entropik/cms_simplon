@@ -1,0 +1,51 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>cms_simplon</title>
+
+<!-- CSS (load bootstrap from a CDN) -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+  <%- (partials.sideBarCss) %><%- (css.style) %>
+</style>
+
+<body>
+  <%- (partials.sideBar) %>
+
+    <section class="header"></section>
+
+    <section class="container">
+
+      <section class="_article">
+        <div class="form-group">
+          <label for="title_input">Modifier le titre</label>
+          <input type="text" class="form-control" id="title_input" placeholder="Entrez un titre">
+        </div>
+        <div class="form-group mb-5">
+          <label for="title">Modifier le contenu</label>
+          <textarea class="form-control" id="content" placeholder="Écrivez votre article" style='height: 277px;'> </textarea>
+        </div>
+        <div class="form-group text-right">
+          <button class="btn update-article" id="update">Publier la modification</button>
+        </div>
+      </section>
+<!-- 
+      <section class="article mb-5">
+      </section> -->
+      <h2 class="title-commentaires mt-5"> Les commentaires </h2>
+
+      <section class="section-commentaires">
+
+        <section class="commentaire">
+        </section>
+      </section>
+
+    </section>
+
+</body>
+
+<script>
+<%- (script.js) %>
+</script>
