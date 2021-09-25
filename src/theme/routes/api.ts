@@ -15,7 +15,7 @@ export class RoutesApi {
     Router.post('/api/commentaires/add', 'commentaire-add', CommentaireController.add)
     Router.post('/api/commentaires/delete', 'commentaire-delete', CommentaireController.delete)
     Router.get('/api/theme/select/:id', 'theme-select', ThemeController.select)
-
+    Router.get('/api/themes', 'themes-get', ThemeController.get);
 
     return Router.all();
   }

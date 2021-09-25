@@ -6,7 +6,8 @@
   "scripts": {
     "start": "tsc && nodemon --watch './**/*.ts' --exec 'ts-node' src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "make-migration": "node dist/core/database/migration/migrate.js"
+    "make-migration": "node dist/core/database/migration/migrate.js",
+    "drop-tables": "node dist/core/database/migration/drop.js"
   },
   "author": "",
   "license": "ISC",

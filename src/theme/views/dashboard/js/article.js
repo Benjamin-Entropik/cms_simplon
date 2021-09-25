@@ -44,7 +44,7 @@ function createElementDeleteSnackbar() {
   del.classList.add('btn')
   cancel.innerHTML = 'Annuler'
   del.innerHTML = 'Valider'
-  title.innerHTML = 'Voulez supprimer l\'article ?';
+  title.innerHTML = 'Voulez vous supprimer l\'article ?';
 
 
   return { card, title, card_footer, cancel, del }
@@ -60,6 +60,8 @@ btn_go_article.addEventListener('click', function () {
 
 update.addEventListener('click', function () {
   updateArticle();
+  location.reload();
+  console.log('toto');
 })
 
 function deleteArticle() {

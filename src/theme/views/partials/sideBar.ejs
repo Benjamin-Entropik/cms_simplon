@@ -14,7 +14,7 @@
       </div>
 
       <div class="nav-footer">
-        <button class="btn">Modifier le theme</button>
+        <button class="btn" id='apparence'>Modifier le theme</button>
       </div>
     </li>
 
@@ -27,6 +27,7 @@
   const returnUrl = window.location.protocol + "//" + window.location.host;
   const redirectDashboard = document.getElementById('home');
   const redirectSite = document.getElementById('site');
+  const apparence = document.getElementById('apparence');
 
   redirectDashboard.addEventListener('click', function () {
     window.location.href = returnUrl + '/dashboard';
@@ -78,5 +79,11 @@
 
     window.location.href = url;
   }
+
+  apparence.addEventListener("click", function () {
+    console.log('toto');
+  const url = returnUrl + '/dashboard/themes';
+  window.location.href = url;
+})
 
 </script>

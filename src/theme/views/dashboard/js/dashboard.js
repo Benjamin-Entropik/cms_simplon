@@ -1,12 +1,12 @@
 const articles = document.getElementById('articles');
-const apparence = document.getElementById('apparence');
+const themes = document.getElementById('themes');
 
 articles.addEventListener("click", function () {
   const url = returnUrl + '/dashboard/articles';
   window.location.href = url;
 })
 
-// apparence.addEventListener("click", function () {
-//   const url = returnUrl + '/dashboard';
-//   window.location.href = url;
-// })
+themes.addEventListener("click", function () {
+  const url = returnUrl + '/dashboard/themes';
+  window.location.href = url;
+})

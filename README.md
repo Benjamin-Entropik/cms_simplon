@@ -44,4 +44,7 @@ Rajouter le fichier d'environnement de base de donnée dans votre container mysq
 ### UTILE
 
   serveur start sur l'url suivant : localhost:3000
-
+  Pour lancer une migration : docker-compose exec node npm run make-migration (penser a eteindre une fois executé)
+  * La tables theme possèdes déjà les données des deux themes créés et le theme standard est activé.
+  
+  Pour supprimé les tables : docker-compose exec node npm run drop-tables (penser a eteindre une fois executé)

@@ -11,9 +11,10 @@ export class Viewer {
   public cssFileName?: string;
   public jsFileName?: string;
   public data: any;
-  public static theme: string;
+  public static theme: string = 'standard';
 
   constructor(file: any, data: any = null) {
+
     Viewer._instance = this;
     if (typeof file == 'object') {
       this.buildPathDashboard(file);
@@ -21,7 +22,6 @@ export class Viewer {
       this.buildPathTheme(file);
     }
     this.data = data;
-
 
   }
 
@@ -42,6 +42,7 @@ export class Viewer {
 
 
   public static make(filename: any, data: any = null) {
+
     Viewer._instance = new Viewer(filename, data);
     return Viewer._instance;
   }
@@ -54,7 +55,6 @@ export class Viewer {
 
   private async getCssFile() {
     Viewer.theme = await MyTheme.getTheme()
-
     if (this.cssFileName) {
       return {
         style: await fs.readFileSync(this.cssDirPath + this.cssFileName, 'utf8')
