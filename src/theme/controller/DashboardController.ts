@@ -8,6 +8,7 @@ export class DashboardController {
     }
     return Viewer.make(file);
   }
+
   public static viewArticles() {
     const file = {
       dirPath: 'src/theme/views/dashboard/',

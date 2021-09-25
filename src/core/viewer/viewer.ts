@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as ejs from 'ejs';
 import { MyTheme } from './theme';
-
 export class Viewer {
   dirPath: string = 'src/theme/views/';
   cssDirPath: string = 'src/assets/css/' + Viewer.theme + '/';
@@ -93,6 +92,6 @@ export class Viewer {
     const css = await this.getCssFile()
     const script = this.getJsScriptFile();
     const partials = this.getSideBarFile();
-    return ejs.render(this.getFile(this.filename), { filename: this.filename, data: this.data, css: css, script: script, partials: partials })
+    return ejs.render(this.getFile(this.filename), { filename: this.filename, data: this.data, css: css, script: script, partials: partials})
   }
 }

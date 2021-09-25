@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #212E53 !important;
+  background-color: transparent !important;
   position: fixed;
   width: 100%;
 }
@@ -10,6 +10,7 @@
 
 .navbar .navbar-brand {
   color: white;
+  background-color: #212E53;
 }
 .navbar .navbar-brand:hover {
   color: white;
@@ -20,6 +21,7 @@
   color: white;
   border-top: 1px solid white;
   border-radius: 5px;
+  background-color: #212E53;
   transition: all ease 0.2s;
   font-weight: bold;
 }

@@ -1,8 +1,13 @@
 			 
 	- Rajouter snackbar de validation ou d'echec 
 	- Mise en place where join
-	- Mise en place authentification 
+
 	- Commenter toute les fonctions 
 	- RESPONSIVITÉ !!
 	- vider champ après action (formulaire)
 	- regex sur tout les champs
+
+	- améliorer design page login !
+	- bloqué page login si connecter 
+	- rajouter bouton déconnection 
+	

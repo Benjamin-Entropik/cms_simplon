@@ -7,9 +7,9 @@ export class Migrate {
   public static make() {
     Article.createTable();
     Commentaire.createTable();
-    Commentaire.addForeinKey();
     Theme.createSeeder();
     User.createTable();
+    User.createSeeder();
     console.log('création des tables avec succès')
   }
 }

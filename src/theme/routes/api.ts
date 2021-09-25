@@ -2,7 +2,7 @@ import { Router } from "../../core/routes/router";
 import { ArticleController } from "../controller/ArticleController";
 import { ThemeController } from "../controller/ThemeController";
 import { CommentaireController } from "../controller/CommentaireController";
-
+import { AuthController } from "../controller/AuthController";
 export class RoutesApi {
   static build() {
     Router.get('/api/articles', 'articles-get', ArticleController.get)
@@ -16,6 +16,8 @@ export class RoutesApi {
     Router.post('/api/commentaires/delete', 'commentaire-delete', CommentaireController.delete)
     Router.get('/api/theme/select/:id', 'theme-select', ThemeController.select)
     Router.get('/api/themes', 'themes-get', ThemeController.get);
+
+    Router.post('/api/login', 'login', AuthController.login)
 
     return Router.all();
   }

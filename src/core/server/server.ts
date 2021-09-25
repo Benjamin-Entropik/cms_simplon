@@ -5,6 +5,8 @@ import { Response } from '../server/response';
 import { Viewer } from '../viewer/viewer';
 import { Router } from '../routes/router';
 import url from "url";
+import { AuthService } from '../../../config/auth.service';
+import { Middleware } from '../../../config/middleware';
 export class ServerSingleton {
 
   private static _instance: ServerSingleton = new ServerSingleton();
@@ -29,15 +31,17 @@ export class ServerSingleton {
     let path = baseURI.pathname?.split('/');
     let params = this.getParams(path);
 
+
     let findRoute = Router.all().filter((route: any) => (route.method == request.method && route.url == request.url || route.url.match(route.regexp, params) && route.url.replace(route.regexp, params) == baseURI.path));
 
     if (findRoute && findRoute.length > 0) {
       if (typeof findRoute[0].callback === "function") {
-        const data = await findRoute[0].callback(request);
 
+        const data = await findRoute[0].callback(request);
         if (data) {
           if (data instanceof Viewer) {
-            response.responseHandler(data)
+            (await Middleware).check(response, data);
+
           } else if (data.view) {
             const viewContent = Viewer.make(data.view, data.payload);
             response.responseHandler(viewContent)
@@ -55,6 +59,7 @@ export class ServerSingleton {
       const viewContent = Viewer.make("notFound");
       response.responseHandler(viewContent)
     }
+
   }
   private startServer(port) {
 

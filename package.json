@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/app.js",
+  "type": "commonjs",
   "scripts": {
     "start": "tsc && nodemon --watch './**/*.ts' --exec 'ts-node' src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "make-migration": "node dist/core/database/migration/migrate.js",
-    "drop-tables": "node dist/core/database/migration/drop.js"
+    "make-migration": "node dist/src/core/database/migration/migrate.js",
+    "drop-tables": "node dist/src/core/database/migration/drop.js"
   },
   "author": "",
   "license": "ISC",

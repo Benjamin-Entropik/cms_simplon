@@ -1,8 +1,4 @@
 let publish = document.getElementById('add-article');
-publish.addEventListener('click', function () {
-  addArticle();
-});
-
 let articles_container = document.querySelector('.articles');
 
 
