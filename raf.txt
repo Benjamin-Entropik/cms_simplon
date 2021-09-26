@@ -7,7 +7,4 @@
 	- vider champ après action (formulaire)
 	- regex sur tout les champs
 
-	- améliorer design page login !
-	- bloqué page login si connecter 
-	- rajouter bouton déconnection 
 	

@@ -1,4 +1,4 @@
-import { Theme } from "../../core/database/model/theme.model";
+import { Theme } from "../../core/model/theme.model";
 import { MyTheme } from "../../core/viewer/theme";
 import { Viewer } from "../../core/viewer/viewer";
 

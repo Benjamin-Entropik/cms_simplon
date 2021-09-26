@@ -1,4 +1,4 @@
-import { Theme } from '../database/model/theme.model';
+import { Theme } from '../model/theme.model';
 
 export class MyTheme {
   public static async resetTheme() {

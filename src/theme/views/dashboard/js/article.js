@@ -1,4 +1,4 @@
-let class_article = document.querySelector('.article');
+let class_article = document.querySelector('._article');
 let class_header = document.querySelector('.header');
 let class_commentaire = document.querySelector('.commentaire');
 let title_commentaire_not_found = document.createElement('h5');
@@ -83,22 +83,22 @@ function deleteArticle() {
 }
 
 getArticle(idArticle).then(_article => {
-  if (_article.length == 0) {
+  if (Object.keys(_article).length === 0) {
     articleNotFound();
   } else {
-    getArticleContent(_article[0])
+    getArticleContent(_article)
+
+    if (_article.commentaires.length > 0) {
+      _article.commentaires.forEach(commentaire => {
+        createCommentaireContent(commentaire)
+      })
+    } else {
+      console.log('pas de commentaire');
+      commentaireNotFound()
+    }
   }
 })
 
-getCommentaires(idArticle).then(_commentaires => {
-  if (_commentaires.length > 0) {
-    _commentaires.forEach(commentaire => {
-      createCommentaireContent(commentaire)
-    })
-  } else {
-    commentaireNotFound()
-  }
-});
 
 async function getArticle(id) {
   try {
@@ -117,27 +117,10 @@ async function getArticle(id) {
   }
 }
 
-async function getCommentaires(id) {
-  try {
-
-    let response = await fetch("http://localhost:3000/api/article/commentaires/" + id, {
-      method: 'get',
-      mode: 'cors',
-      cache: 'default'
-    })
-    response = await response.json();
-    const article = await response.data;
-    return article;
-
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 async function updateArticle() {
   const article = {
     title: title_input.value,
-    content: content.value,
+    content_article: content.value,
     id: idArticle
   };
   fetch("http://localhost:3000/api/articles/update", {
@@ -185,7 +168,7 @@ function getArticleContent(article) {
   title_header.innerHTML = article.title;
   title_input.value = article.title;
   title_input.placeholder = article.title;
-  content.innerHTML = article.content;
+  content.innerHTML = article.content_article;
   class_header.appendChild(title_header);
 
 
@@ -241,13 +224,16 @@ function commentaireNotFound() {
 
 
 function articleNotFound() {
-  let img_Article = document.querySelector('.img-article');
+
   let title_Commentaire = document.querySelector('.title-commentaires');
-  img_Article.remove();
+  btn_go_article.remove();
+  btn_delete_article.remove();
+  class_article.remove();
   title_Commentaire.remove();
   class_commentaire.remove();
-  let notArticle = document.createElement('h4');
-  notArticle.classList.add('text-center')
-  notArticle.innerHTML = 'Article non trouvé'
-  class_article.appendChild(notArticle);
+  let title_header = document.createElement('h1');
+  title_header.innerHTML = 'Article innexistant';
+  title_header.style.color = 'gray'
+  class_header.appendChild(title_header);
+
 }

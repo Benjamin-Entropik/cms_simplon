@@ -1,6 +1,12 @@
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const message = document.getElementById('message');
+const returnUrl = window.location.protocol + "//" + window.location.host;
+
+
+function goSite() {
+  window.location.href = returnUrl + '/';
+}
 
 function login() {
 

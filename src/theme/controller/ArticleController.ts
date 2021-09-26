@@ -1,6 +1,8 @@
-import { Article } from "../../core/database/model/article.model";
-import { Commentaire } from "../../core/database/model/commentaire.model";
+import { Article } from "../../core/model/article.model";
+import { Commentaire } from "../../core/model/commentaire.model";
 import { Request } from "../../core/server/request";
+import { ArticleResource } from "../resources/article.format";
+import { CommentaireResource } from "../resources/commentaire.format";
 import { CommentaireController } from "./CommentaireController";
 
 export class ArticleController {
@@ -13,8 +15,22 @@ export class ArticleController {
     try {
       const { data } = request;
       const id = data.params;
-      const article = await new Article().find(id)
+      const article_commentaires = await new Article().with('commentaire').find(id)
+      if(article_commentaires.length > 0) {
+      const article = ArticleResource.format(article_commentaires[0], id);
+      let commentaires = [];
+      article_commentaires.forEach(_commentaire => {
+        if (_commentaire.id != null) {
+          let commentaire = CommentaireResource.format(_commentaire);
+          commentaires.push(commentaire);
+        }
+      });
+      article['commentaires'] = commentaires;
       return article;
+
+    } else {
+      return {};
+    }
     } catch (error) {
       console.log('error in single article (html)', error)
     }
@@ -22,8 +38,8 @@ export class ArticleController {
 
   public static async add(request: any) {
     try {
-      const { title, content } = request.data.body;
-      let article = await new Article().add({ title, content });
+      const { title, content_article } = request.data.body;
+      let article = await new Article().add({ title, content_article });
       return article;
     } catch (error) {
       console.log('error in post article (api)', error)
@@ -32,8 +48,8 @@ export class ArticleController {
   }
   public static async update(request: any) {
     try {
-      const { title, content, id } = request.data.body;
-      let article = await new Article().update({ title, content }, id);
+      const { title, content_article, id } = request.data.body;
+      let article = await new Article().update({ title, content_article }, id);
       return article;
 
     } catch (error) {

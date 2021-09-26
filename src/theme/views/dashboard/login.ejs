@@ -1,13 +1,54 @@
-<div class="form-group">
-  <label for="title_input">Email</label>
-  <input type="text" class="form-control" id="email" placeholder="Entrez votre e-mail">
-</div>
-<div class="form-group mb-5">
-  <label for="title">Mot de passe</label>
-  <input type='password' class="form-control" id="password">
-</div>
-<button onclick="login()"> Valider </button>
-<div id="message"></div>
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="UTF-8">
+
+<head>
+  <title>cms_simplon</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    <%- (css.style) %>
+  </style>
+
+  <meta name="robots" content="noindex, follow">
+</head>
+
+<body style="background-color: #666666;">
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <div class="login100-form validate-form">
+          <span class="login100-form-title p-b-43">
+            Connectez-vous pour continuer
+          </span>
+          <label for="email" style='margin-top: 5vh'>Email</label>
+
+          <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+            <input class="input100" type="text" name="email" id="email">
+          </div>
+
+          <label for="pass">Password</label>
+
+          <div class="wrap-input100 validate-input" data-validate="Password is required">
+            <input class="input100" type="password" name="pass" id="password">
+          </div>
+          <div class="container-login100-form-btn mt-5">
+            <button class="login100-form-btn" onclick="login()">
+              Se connecter
+            </button>
+          <button class="login100-form-btn go-site mt-5" onclick='goSite()'>Retourner sur le site</button>
+
+          </div>
+        </div>
+        <div class="login100-more" style="background-image: url('images/bg-01.jpg');">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
 <script>
   <%- (script.js) %>
 </script>
+
+</html>

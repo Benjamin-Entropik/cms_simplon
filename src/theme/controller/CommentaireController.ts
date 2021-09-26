@@ -1,4 +1,4 @@
-import { Commentaire } from "../../core/database/model/commentaire.model";
+import { Commentaire } from "../../core/model/commentaire.model";
 import { Request } from "../../core/server/request";
 
 export class CommentaireController {

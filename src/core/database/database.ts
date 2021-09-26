@@ -1,5 +1,5 @@
 import mysql from 'mysql2';
-import { DatabaseModel } from './model/database.model';
+import { DatabaseModel } from '../model/database.model';
 
 export class Database {
   static results: any;

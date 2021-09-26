@@ -23,6 +23,9 @@ services:
 
   db:
     image: mysql:5.7
+    command: 
+      - --max_allowed_packet=520M
+      - --log_error_verbosity=1
     env_file: ./.env
     container_name: cms-db
     ports:

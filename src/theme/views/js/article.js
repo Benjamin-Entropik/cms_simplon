@@ -12,25 +12,24 @@ let btnComment = document.getElementById('btn-comment');
 btnComment.addEventListener('click', function () {
   addCommentaire(idArticle);
 });
+
 getArticle(idArticle).then(_article => {
-  if (_article.length == 0) {
+  if (!_article) {
     articleNotFound();
   } else {
-    createArticleContent(_article[0])
+    createArticleContent(_article)
+    if (_article.commentaires.length > 0) {
+      _article.commentaires.forEach(commentaire => {
+        createCommentaireContent(commentaire)
+      })
+    } else {
+      title_commentaire_not_found.classList.add("commentaire-not-found");
+      title_commentaire_not_found.innerHTML = 'Il n\'y a pas encore de commentaire'
+      class_commentaire.appendChild(title_commentaire_not_found)
+    }
   }
 })
 
-getCommentaires(idArticle).then(_commentaires => {
-  if (_commentaires.length > 0) {
-    _commentaires.forEach(commentaire => {
-      createCommentaireContent(commentaire)
-    })
-  } else {
-    title_commentaire_not_found.classList.add("commentaire-not-found");
-    title_commentaire_not_found.innerHTML = 'Il n\'y a pas encore de commentaire'
-    class_commentaire.appendChild(title_commentaire_not_found)
-  }
-});
 
 async function getArticle(id) {
   try {
@@ -67,7 +66,7 @@ function createArticleContent(article) {
   let content = document.createElement('p');
 
   title.innerHTML = article.title;
-  content.innerHTML = article.content;
+  content.innerHTML = article.content_article;
 
   class_header.appendChild(title);
   class_article.appendChild(content);
@@ -92,23 +91,6 @@ function createCommentaireContent(commentaire) {
   card.appendChild(cardBody);
   class_commentaire.appendChild(card)
 
-}
-
-async function getCommentaires(id) {
-  try {
-
-    let response = await fetch("http://localhost:3000/api/article/commentaires/" + id, {
-      method: 'get',
-      mode: 'cors',
-      cache: 'default'
-    })
-    response = await response.json();
-    const article = await response.data;
-    return article;
-
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 async function addCommentaire(id) {

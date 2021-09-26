@@ -11,7 +11,6 @@ getArticles().then(_articles => {
 })
 
 function createArticleContent(article) {
-
   let article_card = document.createElement('div');
   article_card.classList.add('article');
   let article_content = document.createElement('div');
@@ -22,7 +21,7 @@ function createArticleContent(article) {
   btn_article.classList.add('btn');
 
   title.innerHTML = article.title;
-  content.innerHTML = article.content;
+  content.innerHTML = article.content_article;
   btn_article.innerHTML = 'Voir l\'article'
   article_content.appendChild(title);
   article_content.appendChild(content);

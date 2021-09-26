@@ -18,6 +18,7 @@ export class RoutesApi {
     Router.get('/api/themes', 'themes-get', ThemeController.get);
 
     Router.post('/api/login', 'login', AuthController.login)
+    Router.get('/api/logout', 'logout', AuthController.logout)
 
     return Router.all();
   }

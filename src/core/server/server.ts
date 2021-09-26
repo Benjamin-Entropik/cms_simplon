@@ -5,7 +5,6 @@ import { Response } from '../server/response';
 import { Viewer } from '../viewer/viewer';
 import { Router } from '../routes/router';
 import url from "url";
-import { AuthService } from '../../../config/auth.service';
 import { Middleware } from '../../../config/middleware';
 export class ServerSingleton {
 
