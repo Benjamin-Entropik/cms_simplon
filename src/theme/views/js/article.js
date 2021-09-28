@@ -65,8 +65,8 @@ function createArticleContent(article) {
   let title = document.createElement('h1');
   let content = document.createElement('p');
 
-  title.innerHTML = article.title;
-  content.innerHTML = article.content_article;
+  title.innerHTML = article.title.replace("&glmt&", "'");
+  content.innerHTML = article.content_article.replace("&glmt&", "'");
 
   class_header.appendChild(title);
   class_article.appendChild(content);
@@ -83,8 +83,8 @@ function createCommentaireContent(commentaire) {
   let content = document.createElement('p');
   content.classList.add("card-text");
 
-  title.innerHTML = 'nom : ' + commentaire.name;
-  content.innerHTML = commentaire.content;
+  title.innerHTML = 'nom : ' + commentaire.name.replace("&glmt&", "'");
+  content.innerHTML = commentaire.content.replace("&glmt&", "'");
 
   cardBody.appendChild(title);
   cardBody.appendChild(content);
@@ -97,8 +97,8 @@ async function addCommentaire(id) {
   let name = document.getElementById('name');
   let content = document.getElementById('content');
   const commentaire = {
-    name: name.value,
-    content: content.value,
+    name: name.value.replace("'", "&glmt&"),
+    content: content.value.replace("'", "&glmt&"),
     article_id: id
   };
   fetch("http://localhost:3000/api/commentaires/add", {
@@ -111,5 +111,8 @@ async function addCommentaire(id) {
     .then(response => response.json())
     .then(response => createCommentaireContent(commentaire))
     .catch(error => console.log("Erreur : " + error));
+
+    name.value = '';
+    content.value = '';
 
 }

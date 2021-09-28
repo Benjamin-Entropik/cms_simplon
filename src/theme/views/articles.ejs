@@ -8,12 +8,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
 
 <style>
-  <%- (partials.navBarCss) %><%- (css.style) %>
+  <%- (partials.navBarCss) %><%- (css.style) %><%- (partials.footerCss) %>
 </style>
 
-<body>
+<body style='position: relative'>
   <%- (partials.navBar) %>
-
   <section class="header mb-5">
     <h1>
       Bienvenue sur le blog
@@ -29,6 +28,8 @@
       </section>
 
     </section>
+    <%- (partials.footer) %>
+
 </body>
 
 <script >

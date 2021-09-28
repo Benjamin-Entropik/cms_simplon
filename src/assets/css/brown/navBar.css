@@ -1,6 +1,7 @@
 .navbar {
   background-color: transparent !important;
   position: fixed;
+  z-index: 1 !important;
   width: 100%;
 }
 

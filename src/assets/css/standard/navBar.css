@@ -2,8 +2,12 @@
   background-color: transparent !important;
   position: fixed;
   width: 100%;
-}
+  z-index: 1 !important;
 
+}
+body {
+  font-family: ir;
+}
 .navbar div {
   display: flex;
 }

@@ -61,7 +61,6 @@ btn_go_article.addEventListener('click', function () {
 update.addEventListener('click', function () {
   updateArticle();
   location.reload();
-  console.log('toto');
 })
 
 function deleteArticle() {
@@ -75,7 +74,7 @@ function deleteArticle() {
     .then(response => response.json())
     .then(response => {
       const returnUrl = window.location.protocol + "//" + window.location.host;
-      const url = returnUrl + '/notFound';
+      const url = returnUrl + '/dashboard/articles';
 
       window.location.href = url;
     })
@@ -93,7 +92,6 @@ getArticle(idArticle).then(_article => {
         createCommentaireContent(commentaire)
       })
     } else {
-      console.log('pas de commentaire');
       commentaireNotFound()
     }
   }
@@ -165,10 +163,10 @@ async function deleteCommentaire(id) {
 
 function getArticleContent(article) {
   let title_header = document.createElement('h1');
-  title_header.innerHTML = article.title;
-  title_input.value = article.title;
-  title_input.placeholder = article.title;
-  content.innerHTML = article.content_article;
+  title_header.innerHTML = article.title.replace("&glmt&", "'");;
+  title_input.value = article.title.replace("&glmt&", "'");
+  title_input.placeholder = article.title.replace("&glmt&", "'");;
+  content.innerHTML = article.content_article.replace("&glmt&", "'");;
   class_header.appendChild(title_header);
 
 
@@ -183,8 +181,8 @@ function createCommentaireContent(commentaire) {
   let delete_btn = document.createElement('button');
   updateElementsCommentaireClass(card, cardBody, title, content, commentaire.id);
   updateDeleteCommentaireBtn(delete_btn, commentaire.id);
-  title.innerHTML = 'nom : ' + commentaire.name;
-  content.innerHTML = commentaire.content;
+  title.innerHTML = 'nom : ' + commentaire.name.replace("&glmt&", "'");;
+  content.innerHTML = commentaire.content.replace("&glmt&", "'");;
 
   cardBody.appendChild(title);
   cardBody.appendChild(content);

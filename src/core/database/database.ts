@@ -6,8 +6,8 @@ export class Database {
   constructor() { }
 
   public static createConnection() {
-    const db = new DatabaseModel(process.env.MYSQL_HOST, process.env.MYSQL_USER, process.env.MYSQL_DATABASE, process.env.MYSQL_PASSWORD)
-    return mysql.createConnection(db);
+    const db = new DatabaseModel(100, process.env.MYSQL_HOST, process.env.MYSQL_USER, process.env.MYSQL_DATABASE, process.env.MYSQL_PASSWORD)
+    return mysql.createPool(db);
   }
 
   public static async query(sql) {
@@ -17,7 +17,9 @@ export class Database {
         if (err) {
           return reject(err);
         }
+        console.log(rows);
         resolve(rows);
+
       });
     })
   }

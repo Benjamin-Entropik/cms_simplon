@@ -36,6 +36,7 @@
 
 .articles {
   margin-top: 7vh;
+  padding-bottom: 5vh;
   display: flex;
   flex-wrap: wrap;
 }

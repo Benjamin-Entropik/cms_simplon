@@ -12,7 +12,8 @@ export class MyTheme {
 
   public static async getTheme() {
     const themes = await new Theme().findAll({ choice: 1 });
-    const theme = themes[0].name;
+    
+    const theme = (themes[0].name != undefined) ? themes[0].name : 'standard';
     return theme;
   }
 }

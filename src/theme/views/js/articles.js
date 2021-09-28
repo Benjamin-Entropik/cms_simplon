@@ -43,7 +43,6 @@ function goPageArticle(btn, article) {
 }
 async function getArticles() {
   try {
-
     let response = await fetch("http://localhost:3000/api/articles", {
       method: 'get',
       mode: 'cors',

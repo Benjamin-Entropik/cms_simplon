@@ -1,10 +1,12 @@
 			 
 	- Rajouter snackbar de validation ou d'echec 
-	- Mise en place where join
 
 	- Commenter toute les fonctions 
 	- RESPONSIVITÉ !!
+
 	- vider champ après action (formulaire)
 	- regex sur tout les champs
 
-	
+	- Rajouter un footer (partie site)
+
+	- Correctif : /article/undefined <- a mettre en place

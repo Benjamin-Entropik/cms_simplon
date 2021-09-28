@@ -76,11 +76,14 @@ export class Viewer {
   }
 
   private getSideBarFile() {
+
     return {
       sideBar: fs.readFileSync('src/theme/views/partials/sideBar.ejs', 'utf8'),
       sideBarCss: fs.readFileSync('src/assets/css/partials/sideBar.css', 'utf8'),
       navBar: fs.readFileSync('src/theme/views/partials/navBar.ejs', 'utf8'),
+      footer: fs.readFileSync('src/theme/views/partials/footer.ejs', 'utf8'),
       navBarCss: fs.readFileSync('src/assets/css/' + Viewer.theme + '/navBar.css', 'utf8'),
+      footerCss: fs.readFileSync('src/assets/css/' + Viewer.theme + '/footer.css', 'utf8'),
 
     }
 
@@ -92,6 +95,6 @@ export class Viewer {
     const css = await this.getCssFile()
     const script = this.getJsScriptFile();
     const partials = this.getSideBarFile();
-    return ejs.render(this.getFile(this.filename), { filename: this.filename, data: this.data, css: css, script: script, partials: partials})
+    return ejs.render(this.getFile(this.filename), { filename: this.filename, data: this.data, css: css, script: script, partials: partials })
   }
 }

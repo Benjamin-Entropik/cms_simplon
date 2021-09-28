@@ -52,9 +52,10 @@ function addArticle() {
   let title = document.getElementById('titleArticle');
   let content = document.getElementById('contentArticle');
   const article = {
-    title: title.value,
-    content: content.value
+    title: title.value.replace("'", "&glmt&"),
+    content_article: content.value.replace("'", "&glmt&")
   };
+
   fetch("http://localhost:3000/api/articles/add", {
     method: 'post',
     headers: { "Content-Type": "application/json" },
@@ -68,6 +69,8 @@ function addArticle() {
       createArticleContent(article)
     })
     .catch(error => console.log("Erreur : " + error));
+  title.value = '';
+  content.value = '';
   modal.style.display = "none";
 }
 
