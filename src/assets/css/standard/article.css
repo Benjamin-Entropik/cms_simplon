@@ -59,19 +59,19 @@
 
 /* Track */
 .section-commentaires ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 .section-commentaires ::-webkit-scrollbar-thumb {
-  background: #3A8596; 
+  background: #3A8596;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 .section-commentaires ::-webkit-scrollbar-thumb:hover {
-  background: #3A8596; 
+  background: #3A8596;
 }
 
 .commentaire {
@@ -94,4 +94,34 @@
   border: none;
   margin: 2vh 2vw;
 
+}
+
+@media (max-width: 1025px) {
+  .container {
+    margin-left: 0;
+    padding: 2vh 2vw;
+  }
+
+  .header {
+    padding-left: 0;
+  }
+
+  .article {
+    height: auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .section-commentaires {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+  }
+  .form-commentaire {
+    width: auto;
+    border: none;
+    margin: 2vh 2vw;
+  
+  }
 }

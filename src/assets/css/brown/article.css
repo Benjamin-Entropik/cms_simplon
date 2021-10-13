@@ -112,3 +112,35 @@
   margin-top: 2vh;
   color: gray;
 }
+
+@media (max-width: 1025px) {
+  .container {
+    margin-left: 0;
+    padding: 2vh 2vw;
+  }
+
+  .header {
+    padding-left: 0;
+  }
+
+  .article {
+    height: auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-commentaires {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+  }
+
+  .form-commentaire {
+    width: auto;
+    border: none;
+    margin: 2vh 2vw;
+
+  }
+}

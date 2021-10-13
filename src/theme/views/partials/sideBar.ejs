@@ -20,8 +20,9 @@
     </li>
 
   </ul>
-</nav>
 
+</nav>
+<button class="btn btn-menu" onclick="updateSideBar()">Menu</button>
 <script language="javascript">
 
   const list_Article = document.querySelector('.list-articles')
@@ -104,4 +105,29 @@
     }
     location.reload();
   }
+
+  function updateSideBar() {
+    const sideBar = document.getElementsByClassName("nav")[0];
+    if (sideBar.style.display != 'block') {
+      sideBar.style.display = 'block';
+      sideBar.style.zIndex = 1;
+    } else {
+      sideBar.style.display = 'none';
+    }
+  }
+
+  document.onkeydown = function (evt) {
+    evt = evt || window.event;
+    var isEscape = false;
+    if ("key" in evt) {
+      isEscape = (evt.key === "Escape" || evt.key === "Esc");
+    } else {
+      isEscape = (evt.keyCode === 27);
+    }
+    if (isEscape) {
+      const sideBar = document.getElementsByClassName("nav")[0];
+      sideBar.style.display = 'none';
+
+    }
+  };
 </script>

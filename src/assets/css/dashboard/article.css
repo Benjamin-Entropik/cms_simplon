@@ -165,3 +165,11 @@
   border-color: #A7001E;
   color: #A7001E;
 }
+
+@media (max-width: 1025px) {
+  .container {
+    margin-left: 0;
+    padding: 12vh 2vw;
+  }
+
+}

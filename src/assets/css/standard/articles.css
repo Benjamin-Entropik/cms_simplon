@@ -6,8 +6,6 @@
 
 }
 
-
-
 .openModal:hover {
   background-color: #3A8596;
   color: white;
@@ -32,6 +30,10 @@
   height: 7px;
   background-color: white;
   border-bottom: 1px solid #3A8596;
+}
+
+.template-articles {
+  margin-left: 400px;
 }
 
 .articles {
@@ -111,4 +113,19 @@
   width: 80%;
   height: 40px;
   overflow: hidden;
+}
+
+
+@media (max-width: 1025px) {
+  .template-articles {
+    margin-left: 50px;
+  }
+
+  .header {
+    color: white;
+  }
+
+  .article {
+    width: 100%;
+  }
 }

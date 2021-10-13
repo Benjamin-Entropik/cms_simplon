@@ -23,6 +23,9 @@
   border-bottom: 1px solid maroon;
 }
 
+.template-articles {
+  margin-left: 400px;
+}
 
 .articles {
   margin-top: 7vh;
@@ -101,4 +104,18 @@
   width: 80%;
   height: 40px;
   overflow: hidden;
+}
+
+@media (max-width: 1025px) {
+  .template-articles {
+    margin-left: 50px;
+  }
+
+  .header {
+    padding-left: 0;
+  }
+
+  .article {
+    width: 100%;
+  }
 }

@@ -1,6 +1,5 @@
 let class_articles = document.getElementsByClassName('articles')[0];
 
-
 getArticles().then(_articles => {
   if (_articles.length > 0) {
     _articles.forEach(article => {
@@ -20,8 +19,8 @@ function createArticleContent(article) {
   let btn_article = document.createElement('button');
   btn_article.classList.add('btn');
 
-  title.innerHTML = article.title;
-  content.innerHTML = article.content_article;
+  title.innerHTML = article.title.replace("&glmt&", "'");;
+  content.innerHTML = article.content_article.replace("&glmt&", "'");;
   btn_article.innerHTML = 'Voir l\'article'
   article_content.appendChild(title);
   article_content.appendChild(content);
